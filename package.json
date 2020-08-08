@@ -1,0 +1,29 @@
+{
+  "name": "theimagetextbot",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stefifox/theImageTextBot.git"
+  },
+  "keywords": [
+    "Telegram",
+    "Bot",
+    "Image",
+    "Text"
+  ],
+  "author": "StefifoxApps",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stefifox/theImageTextBot/issues"
+  },
+  "homepage": "https://github.com/Stefifox/theImageTextBot#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.50.0",
+    "text2png": "^2.3.0"
+  }
+}
