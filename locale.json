@@ -1,9 +1,0 @@
-{
-    "it":{
-        "welcome":"Benvenuto, scrivi un messaggio",
-        "help":"<b>Lista comandi</b>\n- \/Settings "
-    },
-    "en":{
-        "welcome":"Welcome, send a message"
-    }
-}
