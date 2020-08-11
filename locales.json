@@ -1,12 +1,24 @@
 {
-    "it":{
-        "welcome":"Benvenuto, scrivi un messaggio",
-        "help":"<b>Lista comandi</b>\n- /Settings ",
-        "null":"Comando non riconosciuto usa /help oppure scrivi del testo"
+    "it": {
+        "welcome": "Benvenuto, scrivi un messaggio",
+        "help": "<b>Lista comandi</b>\n- /Settings ",
+        "null": "Comando non riconosciuto usa /help oppure scrivi del testo",
+        "colorSelection": "Seleziona un colore per provare",
+        "texts": {
+            "white": "Sfondo bianco\nTesto nero",
+            "black": "Sfondo nero\nTesto bianco",
+            "purple": "Sfondo bianco\nTesto viola"
+        }
     },
-    "en":{
-        "welcome":"Welcome, send a message",
+    "en": {
+        "welcome": "Welcome, send a message",
         "help": "<b>Command List</b>\n- \/Settings ",
-        "null": "Sorry, we can't help, use /help or send some text"
+        "null": "Sorry, we can't help, use /help or send some text",
+        "colorSelection": "Select a color to try",
+        "texts": {
+            "white": "White backgroud\nBlack text",
+            "black": "Black backgroud\nWhite text",
+            "purple": "White backgroud\nPurple text"
+        }
     }
 }
