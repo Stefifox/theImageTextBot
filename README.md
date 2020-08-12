@@ -3,7 +3,7 @@
 
 - Author: Stefifox - StefifoxApps
 - Version: 0.1.0
-- README Version: 1.0.0
+- README Version: 1.1.0
 - Info: Use this bot for made a personalized image with your text in Telegram Messanger
 
 Try the bot: [TelegramBot](https://t.me/theImageTextBot)
@@ -23,6 +23,16 @@ settings.json File:
     "apiKey": "your api key"
 }
 ```
+---
+## Fonts in this Bot
+
+All fonts used in this bot, contained in resources directory
+
+|Font Name | Font License|
+|----------|-------------|
+| OpenSans | Apache License 2.0|
+| Lemonada | Open Font License |
+
 ---
 
 ## License
