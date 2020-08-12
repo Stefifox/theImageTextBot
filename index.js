@@ -29,6 +29,35 @@ var keyboards = {
         }]
 
     ],
+    colorSelectionEdit: [
+        [{
+            text: "White",
+            callback_data: "we"
+        }, {
+            text: "Black",
+            callback_data: "be"
+        }],
+        [{
+            text: "Purple",
+            callback_data: "pe"
+        }],
+        [{
+            text: "🔙 Back 🔙",
+            callback_data: "backKey"
+        }]
+
+    ],
+    editKeyboard: [
+        [{
+                text: "Colors",
+                callback_data: "colorKey"
+            },
+            {
+                text: "Fonts",
+                callback_data: "fontKey"
+            }
+        ]
+    ]
 }
 
 function getLanguage(msg) {
@@ -45,7 +74,11 @@ function getLanguage(msg) {
 Telegram.on('message', msg => {
     //console.log(msg)
     if (msg.text.search("/") !== 0) {
-        Telegram.sendPhoto(msg.chat.id, png(msg.text, imageSettings.purple))
+        Telegram.sendPhoto(msg.chat.id, png(msg.text, imageSettings.default), {
+            reply_markup: {
+                inline_keyboard: keyboards.editKeyboard
+            }
+        })
     } else {
         getLanguage(msg).then(lang => {
             switch (msg.text) {
@@ -109,6 +142,33 @@ Telegram.on('callback_query', query => {
                 break
             case "p":
                 Telegram.sendPhoto(query.from.id, png(locale[lang].texts.purple, imageSettings.purple))
+                break
+            case "colorKey":
+                console.log(query)
+                Telegram.editMessageReplyMarkup({
+                    inline_keyboard: keyboards.colorSelectionEdit
+                }, {
+                    message_id: query.message.message_id,
+                    chat_id: query.from.id
+                })
+                break
+            case "fontKey":
+                console.log(query)
+                Telegram.editMessageReplyMarkup({
+                    //inline_keyboard: keyboards.colorSelectionEdit
+                }, {
+                    message_id: query.message.message_id,
+                    chat_id: query.from.id
+                })
+                break
+            case "backKey":
+                console.log(query)
+                Telegram.editMessageReplyMarkup({
+                    inline_keyboard: keyboards.editKeyboard
+                }, {
+                    message_id: query.message.message_id,
+                    chat_id: query.from.id
+                })
                 break
         }
     })

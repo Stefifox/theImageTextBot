@@ -1,6 +1,6 @@
 {
     "it": {
-        "welcome": "Benvenuto, scrivi un messaggio",
+        "welcome": "Benvenuto, scrivi un messaggio\nProvami usando il tasto qui sotto",
         "help": "<b>Lista comandi</b>\n- /Settings ",
         "null": "Comando non riconosciuto usa /help oppure scrivi del testo",
         "colorSelection": "Seleziona un colore per provare",
@@ -11,7 +11,7 @@
         }
     },
     "en": {
-        "welcome": "Welcome, send a message",
+        "welcome": "Welcome, send a message\nTry me using the button above here",
         "help": "<b>Command List</b>\n- \/Settings ",
         "null": "Sorry, we can't help, use /help or send some text",
         "colorSelection": "Select a color to try",

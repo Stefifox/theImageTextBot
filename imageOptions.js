@@ -1,4 +1,11 @@
 module.exports = {
+    default: {
+        color: 'black',
+        backgroundColor: 'white',
+        textAlign: 'center',
+        lineSpacing: 10,
+        padding: 20,
+    },
     black: {
         color: 'black',
         backgroundColor: 'white',
