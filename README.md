@@ -2,8 +2,8 @@
 ## Image generator for Telegram
 
 - Author: Stefifox - StefifoxApps
-- Version: 0.1.0
-- README Version: 1.1.0
+- Version: 0.1.1
+- README Version: 1.2.0
 - Info: Use this bot for made a personalized image with your text in Telegram Messanger
 
 Try the bot: [TelegramBot](https://t.me/theImageTextBot)
@@ -33,6 +33,16 @@ All fonts used in this bot, contained in resources directory
 | OpenSans | Apache License 2.0|
 | Lemonada | Open Font License |
 
+---
+
+## Colors
+
+|Text Color| HEX of Text| Backgroud|
+|----------|------------|---------|
+|White|'white'|'black'|
+|Black|'black'|'white'|
+|Purple|'#8A00FF'|'white'|
+|Red|'#FF2424'|'white'|
 ---
 
 ## License
