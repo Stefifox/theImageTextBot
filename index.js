@@ -4,6 +4,7 @@ const imageSettings = require('./imageOptions.js')
 const locale = require("./locales.json")
 const set = require("./settings.json")
 
+
 var Telegram = new Telegrambot(set.apiKey, {
     polling: true
 })
@@ -15,7 +16,7 @@ var keyboards = {
             callback_data: "try"
         }]
     ],
-    colorSelection: [
+    trySelection: [
         [{
             text: "White",
             callback_data: "w"
@@ -26,20 +27,39 @@ var keyboards = {
         [{
             text: "Purple",
             callback_data: "p"
-        }]
-
-    ],
-    colorSelectionEdit: [
-        [{
-            text: "White",
-            callback_data: "we"
         }, {
-            text: "Black",
-            callback_data: "be"
-        }],
+            text: "Red",
+            callback_data: "r"
+        }]
+    ],
+    fontSelection: [
+        [{
+                text: "OpenSans",
+                callback_data: "Op0"
+            },
+            {
+                text: "Lemonada",
+                callback_data: "Op1"
+            }
+        ],
+        [{
+            text: "🔙 Back 🔙",
+            callback_data: "backKey"
+        }]
+    ],
+    colorSelection: [
+        [{
+                text: "White",
+                callback_data: "white"
+            },
+            {
+                text: "Black",
+                callback_data: "black"
+            }
+        ],
         [{
             text: "Purple",
-            callback_data: "pe"
+            callback_data: "purple"
         }],
         [{
             text: "🔙 Back 🔙",
@@ -56,6 +76,12 @@ var keyboards = {
                 text: "Fonts",
                 callback_data: "fontKey"
             }
+        ],
+        [
+            {
+                text: "Confirm",
+                callback_data: "confirm"
+            }
         ]
     ]
 }
@@ -71,10 +97,12 @@ function getLanguage(msg) {
     })
 }
 
+
 Telegram.on('message', msg => {
     //console.log(msg)
+
     if (msg.text.search("/") !== 0) {
-        Telegram.sendPhoto(msg.chat.id, png(msg.text, imageSettings.default), {
+        Telegram.sendPhoto(msg.chat.id, png(msg.text, imageSettings.options(1, 0)), { //Option 1, 0 is the default text color and font option
             reply_markup: {
                 inline_keyboard: keyboards.editKeyboard
             }
@@ -120,8 +148,48 @@ Telegram.on('inline_query', query => {
     //Telegram.answerInlineQuery(query.id, results)
 })
 
-Telegram.on('callback_query', query => {
+/*Telegram.on("callback_query", query => {
+    let image
 
+    //Color Edit Query
+    switch (query.data) {
+        case "white":
+            color = 1
+            break
+        case "black":
+            color = 0
+            break
+        case "purple":
+            color = 2
+            break
+    }
+    switch (query.data) {
+        case "Op0":
+            font = 0
+            break
+        case "Op1":
+            font = 1
+            break
+    }
+
+    console.log(color, font)
+
+    if(query.data === "confirm"){
+        image = png("testo", imageSettings.options(color, font))
+        Telegram.editMediaMessage({
+            type: 'photo',
+            media: image
+        },
+        {
+            message_id: query.message.message_id,
+            chat_id: query.from.id
+        })
+    }
+    
+
+})
+*/
+Telegram.on('callback_query', query => {
     //console.log(query)
     getLanguage(query).then(lang => {
         switch (query.data) {
@@ -130,39 +198,41 @@ Telegram.on('callback_query', query => {
                     message_id: query.message.message_id,
                     chat_id: query.from.id,
                     reply_markup: {
-                        inline_keyboard: keyboards.colorSelection
+                        inline_keyboard: keyboards.trySelection
                     }
                 })
                 break;
+                //Try Me Cases
             case "w":
-                Telegram.sendPhoto(query.from.id, png(locale[lang].texts.white, imageSettings.white))
+                Telegram.sendPhoto(query.from.id, png(locale[lang].texts.white, imageSettings.options(0, 0)))
                 break
             case "b":
-                Telegram.sendPhoto(query.from.id, png(locale[lang].texts.black, imageSettings.black))
+                Telegram.sendPhoto(query.from.id, png(locale[lang].texts.black, imageSettings.options(1, 0)))
                 break
             case "p":
-                Telegram.sendPhoto(query.from.id, png(locale[lang].texts.purple, imageSettings.purple))
+                Telegram.sendPhoto(query.from.id, png(locale[lang].texts.purple, imageSettings.options(2, 0)))
                 break
+                case "r":
+                Telegram.sendPhoto(query.from.id, png(locale[lang].texts.red, imageSettings.options(3, 0)))
+                break
+                //Edit Keyboards cases
             case "colorKey":
-                console.log(query)
                 Telegram.editMessageReplyMarkup({
-                    inline_keyboard: keyboards.colorSelectionEdit
+                    inline_keyboard: keyboards.colorSelection
                 }, {
                     message_id: query.message.message_id,
                     chat_id: query.from.id
                 })
                 break
             case "fontKey":
-                console.log(query)
                 Telegram.editMessageReplyMarkup({
-                    //inline_keyboard: keyboards.colorSelectionEdit
+                    inline_keyboard: keyboards.fontSelection
                 }, {
                     message_id: query.message.message_id,
                     chat_id: query.from.id
                 })
                 break
             case "backKey":
-                console.log(query)
                 Telegram.editMessageReplyMarkup({
                     inline_keyboard: keyboards.editKeyboard
                 }, {

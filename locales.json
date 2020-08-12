@@ -3,22 +3,24 @@
         "welcome": "Benvenuto, scrivi un messaggio\nProvami usando il tasto qui sotto",
         "help": "<b>Lista comandi</b>\n- /Settings ",
         "null": "Comando non riconosciuto usa /help oppure scrivi del testo",
-        "colorSelection": "Seleziona un colore per provare",
+        "colorSelection": "Seleziona il colore del testo per provare",
         "texts": {
             "black": "Sfondo bianco\nTesto nero",
             "white": "Sfondo nero\nTesto bianco",
-            "purple": "Sfondo bianco\nTesto viola"
+            "purple": "Sfondo bianco\nTesto viola",
+            "red": "Sfondo bianco\nTesto rosso"
         }
     },
     "en": {
         "welcome": "Welcome, send a message\nTry me using the button above here",
         "help": "<b>Command List</b>\n- \/Settings ",
         "null": "Sorry, we can't help, use /help or send some text",
-        "colorSelection": "Select a color to try",
+        "colorSelection": "Select a text color to try the bot",
         "texts": {
             "black": "White backgroud\nBlack text",
             "white": "Black backgroud\nWhite text",
-            "purple": "White backgroud\nPurple text"
+            "purple": "White backgroud\nPurple text",
+            "red": "White backgroud\nRed text"
         }
     }
 }
