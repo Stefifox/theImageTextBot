@@ -1,95 +1,22 @@
 const Telegrambot = require("node-telegram-bot-api")
 const png = require('text2png')
+//LocalModules
 const imageSettings = require('./imageOptions.js')
+const keyboards = require("./keyboards.js")
+//jsonFiles
 const locale = require("./locales.json")
 const set = require("./settings.json")
-
+//LocalConst
+const langList = ["en", "it"] //LanguageList 
 
 var Telegram = new Telegrambot(set.apiKey, {
     polling: true
 })
 
-var keyboards = {
-    start: [
-        [{
-            text: "Try Me",
-            callback_data: "try"
-        }]
-    ],
-    trySelection: [
-        [{
-            text: "White",
-            callback_data: "w"
-        }, {
-            text: "Black",
-            callback_data: "b"
-        }],
-        [{
-            text: "Purple",
-            callback_data: "p"
-        }, {
-            text: "Red",
-            callback_data: "r"
-        }]
-    ],
-    fontSelection: [
-        [{
-                text: "OpenSans",
-                callback_data: "Op0"
-            },
-            {
-                text: "Lemonada",
-                callback_data: "Op1"
-            }
-        ],
-        [{
-            text: "🔙 Back 🔙",
-            callback_data: "backKey"
-        }]
-    ],
-    colorSelection: [
-        [{
-                text: "White",
-                callback_data: "white"
-            },
-            {
-                text: "Black",
-                callback_data: "black"
-            }
-        ],
-        [{
-            text: "Purple",
-            callback_data: "purple"
-        }],
-        [{
-            text: "🔙 Back 🔙",
-            callback_data: "backKey"
-        }]
-
-    ],
-    editKeyboard: [
-        [{
-                text: "Colors",
-                callback_data: "colorKey"
-            },
-            {
-                text: "Fonts",
-                callback_data: "fontKey"
-            }
-        ],
-        [
-            {
-                text: "Confirm",
-                callback_data: "confirm"
-            }
-        ]
-    ]
-}
-
 function getLanguage(msg) {
     return new Promise((resolve, reject) => {
         let lanCode = msg.from.language_code
-        if (lanCode === 'en' || lanCode === 'it') {
+        if (langList.indexOf(lanCode) !== -1) {
             resolve(lanCode)
             return
         }
@@ -98,7 +25,7 @@ function getLanguage(msg) {
 }
 
 
-Telegram.on('message', msg => {
+Telegram.on('text', msg => {
     //console.log(msg)
 
     if (msg.text.search("/") !== 0) {
@@ -114,6 +41,14 @@ Telegram.on('message', msg => {
                     Telegram.sendMessage(msg.chat.id, locale[lang].welcome, {
                         reply_markup: {
                             inline_keyboard: keyboards.start
+                        }
+                    })
+                    break
+                case "/help":
+                    Telegram.sendMessage(msg.chat.id, locale[lang].help, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                            inline_keyboard: keyboards.moreHelp
                         }
                     })
                     break
@@ -212,7 +147,7 @@ Telegram.on('callback_query', query => {
             case "p":
                 Telegram.sendPhoto(query.from.id, png(locale[lang].texts.purple, imageSettings.options(2, 0)))
                 break
-                case "r":
+            case "r":
                 Telegram.sendPhoto(query.from.id, png(locale[lang].texts.red, imageSettings.options(3, 0)))
                 break
                 //Edit Keyboards cases
@@ -238,6 +173,24 @@ Telegram.on('callback_query', query => {
                 }, {
                     message_id: query.message.message_id,
                     chat_id: query.from.id
+                })
+                break
+            case "backKey1":
+                Telegram.editMessageText(locale[lang].help, {
+                    message_id: query.message.message_id,
+                    chat_id: query.from.id,
+                    reply_markup: {
+                        inline_keyboard: keyboards.moreHelp
+                    }
+                })
+                break
+            case "credit":
+                Telegram.editMessageText(locale[lang].credits, {
+                    message_id: query.message.message_id,
+                    chat_id: query.from.id,
+                    reply_markup: {
+                        inline_keyboard: keyboards.git
+                    }
                 })
                 break
         }

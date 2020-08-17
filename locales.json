@@ -1,7 +1,7 @@
 {
     "it": {
         "welcome": "Benvenuto, scrivi un messaggio\nProvami usando il tasto qui sotto",
-        "help": "<b>Lista comandi</b>\n- /Settings ",
+        "help": "<b>Lista comandi</b>\n- \n- \n- ",
         "null": "Comando non riconosciuto usa /help oppure scrivi del testo",
         "colorSelection": "Seleziona il colore del testo per provare",
         "texts": {
@@ -9,7 +9,8 @@
             "white": "Sfondo nero\nTesto bianco",
             "purple": "Sfondo bianco\nTesto viola",
             "red": "Sfondo bianco\nTesto rosso"
-        }
+        },
+        "credits": "Bot by StefifoxApps\nQuesto Bot è regolato da Apache 2.0 License\nPuoi trovare il codice su GitHub\n\nCollaboratori:\n - Stefifox\n - GhostyJade"
     },
     "en": {
         "welcome": "Welcome, send a message\nTry me using the button above here",
@@ -21,6 +22,20 @@
             "white": "Black backgroud\nWhite text",
             "purple": "White backgroud\nPurple text",
             "red": "White backgroud\nRed text"
-        }
+        },
+        "credits": "Bot by StefifoxApps\nThis bot is under Apache 2.0 License\nYou can find code on GitHub\n\nCollaborators:\n - Stefifox\n - GhostyJade"
+    },
+    "fr": {
+        "welcome": "fr is not supported now",
+        "help": "fr is not supported now",
+        "null": "fr is not supported now",
+        "colorSelection": "fr is not supported now",
+        "texts": {
+            "black": "fr is not supported now",
+            "white": "fr is not supported now",
+            "purple": "fr is not supported now",
+            "red": "fr is not supported now"
+        },
+        "credits": "fr is not supported now"
     }
 }

@@ -2,7 +2,7 @@
 ## Image generator for Telegram
 
 - Author: Stefifox - StefifoxApps
-- Version: 0.1.1
+- Version: 0.1.2
 - README Version: 1.2.0
 - Info: Use this bot for made a personalized image with your text in Telegram Messanger
 

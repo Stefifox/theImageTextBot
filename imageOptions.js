@@ -1,4 +1,4 @@
-var fontList = ['40px OpenSans', '40px OpenSans']
+var fontList = ['40px OpenSans', '40px Lemonada']
 var fontListPosition = ['resources/OpenSans.ttf', 'resources/Lemonada.ttf']
 var fontListName = ['OpenSans','Lemonada']
 var colorList = ['white', 'black', '#8A00FF', '#FF2424']
